@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "reckon-plugins",
+  "version": "0.1.0",
+  "description": "Architectural decision governance for Claude Code agents",
+  "owner": {
+    "name": "shuntl"
+  },
+  "plugins": [
+    {
+      "name": "reckon",
+      "description": "Automatically capture, search, and govern architectural decisions during development",
+      "source": ".",
+      "category": "development"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "reckon",
+  "version": "0.1.0",
+  "description": "Architectural decision governance — automatically capture, search, and manage decisions via Reckon",
+  "author": {
+    "name": "shuntl"
+  }
+}
