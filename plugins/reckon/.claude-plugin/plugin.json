@@ -8,7 +8,7 @@
   "mcpServers": {
     "reckon": {
       "type": "http",
-      "url": "https://reckon-mcp-production.up.railway.app/mcp"
+      "url": "https://mcp.reckon.sh/mcp"
     }
   }
 }
