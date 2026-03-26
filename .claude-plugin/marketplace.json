@@ -10,7 +10,7 @@
     {
       "name": "reckon",
       "description": "Automatically capture, search, and govern architectural decisions during development",
-      "source": ".",
+      "source": "./plugins/reckon",
       "category": "development"
     }
   ]
