@@ -4,5 +4,11 @@
   "description": "Architectural decision governance — automatically capture, search, and manage decisions via Reckon",
   "author": {
     "name": "shuntl"
+  },
+  "mcpServers": {
+    "reckon": {
+      "type": "http",
+      "url": "https://reckon-mcp-production.up.railway.app/mcp"
+    }
   }
 }
