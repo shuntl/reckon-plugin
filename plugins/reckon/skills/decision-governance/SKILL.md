@@ -27,9 +27,10 @@ Before planning any significant work, search for existing decisions:
 
 1. Extract 2-3 keywords from the task at hand
 2. Call `mcp__reckon__search` with those keywords
-3. If results exist, call `mcp__reckon__get_decision` to read the full decision including dependency links
-4. If a decision constrains the planned approach, state it explicitly: _"Existing decision #N establishes X. This constrains our approach."_
-5. Use `mcp__reckon__list_decisions` with `category` or `tags` filters for broader context
+3. If the task involves specific files, also call `mcp__reckon__search_by_path` with those file paths to find decisions governing that code area
+4. If results exist, call `mcp__reckon__get_decision` to read the full decision including dependency links
+5. If a decision constrains the planned approach, state it explicitly: _"Existing decision #N establishes X. This constrains our approach."_
+6. Use `mcp__reckon__list_decisions` with `category` or `tags` filters for broader context
 
 ## Conflict Detection
 
@@ -55,6 +56,8 @@ When capturing, set:
 - `sourceRef`: brief context string (e.g. `"auth-refactor-session"`)
 - `status`: `"draft"` (default — never auto-set `accepted`)
 - `linkedDecisionIds`: IDs of related decisions found during search
+- `metadata.paths`: file paths most relevant to this decision (the files that would need to change if this decision were reversed)
+- `metadata.pathPatterns`: glob patterns for broader coverage (e.g. `"packages/db/**"` for database decisions)
 
 Structure the body using the template in `references/decision-template.md`.
 

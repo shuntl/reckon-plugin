@@ -1,38 +1,16 @@
 ---
-description: Scan codebase for implicit architectural decisions and bootstrap Reckon records
-argument-hint: "[optional: focus area e.g. 'database', 'auth', 'testing']"
+description: Bootstrap all decision records — runs technical scan then product scan
+argument-hint: "[optional: focus area e.g. 'database', 'auth']"
 ---
 
-# Initialize Reckon Decision Records
+# Initialize All Decision Records
 
-Bootstrap this repository's decision records by scanning the codebase for implicit architectural and product decisions that have already been made but not recorded.
+Run both the technical and product decision initialization in sequence.
 
 ## Process
 
-1. **Check existing records** — Call `mcp__reckon__list_decisions` to see what's already captured. Note existing decisions to avoid duplicates.
+1. **Technical first** — Run `/reckon:init-technical` with $ARGUMENTS (if provided). This scans configuration files, architecture signals, and interviews the user about technical constraints.
 
-2. **Launch scanner** — Launch the `decision-scanner` agent to analyze the codebase. If $ARGUMENTS specifies a focus area, pass it to the agent to narrow the scan.
+2. **Product second** — After technical decisions are captured, run `/reckon:init-product` with $ARGUMENTS (if provided). This scans for product signals and interviews the user about value proposition, target users, and feature boundaries. Product decisions will be linked to the technical decisions captured in step 1.
 
-3. **Review findings** — Present the agent's findings as a numbered list to the user. For each finding, show:
-   - Suggested title
-   - Category (technical/product)
-   - Suggested tags
-   - Brief summary of the decision
-   - Confidence level (high/medium/low)
-
-4. **Confirm with user** — Ask the user which findings to capture. They may want to:
-   - Accept as-is
-   - Modify the title or body
-   - Skip (not a real decision)
-   - Merge multiple findings into one decision
-
-5. **Capture approved decisions** — For each approved finding, call `mcp__reckon__capture_decision` with:
-   - `source: "init"`
-   - `sourceRef: "codebase-scan"`
-   - `status: "proposed"` (init surfaces decisions for review — ask the user if they want to batch-accept them after capture)
-   - `category`: as identified by the scanner
-   - Appropriate tags
-
-6. **Link related decisions** — After all decisions are captured, identify relationships and call `mcp__reckon__link_decisions` for decisions that depend on each other.
-
-7. **Present summary** — Show a final table of all captured decisions with their numbers, titles, categories, and links.
+3. **Final landscape** — After both are complete, call `mcp__reckon__get_decision_landscape` and show the user a summary of the full decision landscape.
