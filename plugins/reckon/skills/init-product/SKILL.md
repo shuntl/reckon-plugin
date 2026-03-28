@@ -1,7 +1,6 @@
 ---
 name: init-product
 description: Capture foundational product decisions through codebase scanning and user interview
-argument-hint: "[optional: focus area e.g. 'auth', 'scope', 'users']"
 ---
 
 # Initialize Product Decision Records

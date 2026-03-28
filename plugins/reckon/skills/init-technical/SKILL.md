@@ -1,7 +1,6 @@
 ---
 name: init-technical
 description: Scan codebase for implicit technical decisions and bootstrap Reckon records
-argument-hint: "[optional: focus area e.g. 'database', 'auth', 'testing']"
 ---
 
 # Initialize Technical Decision Records
