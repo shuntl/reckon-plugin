@@ -1,5 +1,4 @@
 ---
-name: init-technical
 description: Scan codebase for implicit technical decisions and bootstrap Reckon records
 ---
 

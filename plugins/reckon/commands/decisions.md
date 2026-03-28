@@ -1,5 +1,4 @@
 ---
-name: decisions
 description: Show a summary of all active architectural decisions
 ---
 

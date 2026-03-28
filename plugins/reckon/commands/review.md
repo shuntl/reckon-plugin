@@ -1,5 +1,4 @@
 ---
-name: review
 description: Audit all decisions for staleness, conflicts, and missing links
 ---
 

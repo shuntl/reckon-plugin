@@ -1,5 +1,4 @@
 ---
-name: init-product
 description: Capture foundational product decisions through codebase scanning and user interview
 ---
 

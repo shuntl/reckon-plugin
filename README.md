@@ -37,9 +37,9 @@ After updating, run `/reload-plugins` to load the new version into your current 
 The fastest way to bootstrap decision records for your project:
 
 1. **Enter plan mode** — type `/plan` so Claude researches your codebase without making changes
-2. **Run `/reckon:init-product`** — scans for product decisions (scope, users, business rules) and interviews you about value proposition, target users, and feature boundaries. Review and approve the proposed decision tree.
+2. **Run `/reckon:init_product`** — scans for product decisions (scope, users, business rules) and interviews you about value proposition, target users, and feature boundaries. Review and approve the proposed decision tree.
 3. **Enter plan mode again** — type `/plan` for the next scan
-4. **Run `/reckon:init-technical`** — scans for implicit technical decisions (frameworks, architecture, tooling) and interviews you about constraints. Links to the product decisions captured in step 2. Review and approve.
+4. **Run `/reckon:init_technical`** — scans for implicit technical decisions (frameworks, architecture, tooling) and interviews you about constraints. Links to the product decisions captured in step 2. Review and approve.
 
 After both scans, you'll have a full decision landscape with dependency links between technical and product choices.
 
@@ -57,8 +57,8 @@ You can also run `/reckon:init` to execute both scans in sequence.
 | Command | Description |
 |---------|-------------|
 | `/reckon:init` | Run both product and technical init in sequence |
-| `/reckon:init-product` | Capture foundational product decisions through scanning and interview |
-| `/reckon:init-technical` | Scan codebase for implicit technical decisions and bootstrap records |
+| `/reckon:init_product` | Capture foundational product decisions through scanning and interview |
+| `/reckon:init_technical` | Scan codebase for implicit technical decisions and bootstrap records |
 | `/reckon:review` | Audit all decisions for staleness, conflicts, and missing links |
 | `/reckon:decisions` | Show a summary table of all active decisions |
 
