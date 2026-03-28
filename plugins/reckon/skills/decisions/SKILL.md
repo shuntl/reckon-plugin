@@ -1,6 +1,6 @@
 ---
+name: decisions
 description: Show a summary of all active architectural decisions
-argument-hint: "[optional: status or category filter e.g. 'draft', 'accepted', 'product', 'technical']"
 ---
 
 # Decision Summary

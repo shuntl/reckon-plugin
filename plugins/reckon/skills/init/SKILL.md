@@ -1,6 +1,6 @@
 ---
+name: init
 description: Bootstrap all decision records — runs product scan then technical scan
-argument-hint: "[optional: focus area e.g. 'database', 'auth']"
 ---
 
 # Initialize All Decision Records
