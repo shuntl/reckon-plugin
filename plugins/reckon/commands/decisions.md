@@ -15,9 +15,11 @@ Show a compact overview of all active decisions in this repository.
 3. **Format output** — Present as a markdown table:
 
    ```
-   | # | Title | Category | Status | Tags | Date |
-   |---|-------|----------|--------|------|------|
+   | # | Title | Category | Status | Tags | Signals | Date |
+   |---|-------|----------|--------|------|---------|------|
    ```
+
+   For product decisions in draft/proposed status, show "Hypothesis" instead of the raw status value. For accepted product decisions, show "Validated".
 
 4. **Show counts** — Below the table, show:
    - Total decisions

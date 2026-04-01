@@ -95,3 +95,10 @@ When determining the tree structure, ask: "Does decision A need to be in place f
 ## Scope
 
 If a focus area was specified (e.g., "database", "auth", "product"), prioritize that area but still report other high-confidence findings. If no focus area, scan everything.
+
+### Signal Findings
+When scanning reveals evidence relevant to existing decisions (e.g. a README statement that validates a product hypothesis, or code that contradicts a technical decision), note it:
+- **Supports #[number] [title]**: [evidence description] (source: [file/context])
+- **Contradicts #[number] [title]**: [evidence description] (source: [file/context])
+
+The parent command can capture these as signals after user review.

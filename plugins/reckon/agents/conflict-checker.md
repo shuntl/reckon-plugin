@@ -1,7 +1,7 @@
 ---
 name: conflict-checker
 description: Analyzes decisions for conflicts, staleness, and missing dependency links
-tools: Read, Glob, Grep, Bash, mcp__reckon__get_decision
+tools: Read, Glob, Grep, Bash, mcp__reckon__get_decision, mcp__reckon__list_signals
 model: sonnet
 ---
 
@@ -42,3 +42,11 @@ Return structured findings in three categories:
 ```
 
 If a category has no findings, report it as empty: "No issues found."
+
+## Untested Hypotheses
+For each product decision in draft/proposed status with zero signals:
+- **#[number] [title]** — Product hypothesis with no evidence. Suggested action: [gather evidence/accept on reasoning alone/reconsider]
+
+## Contradicted Hypotheses
+For each product decision in draft/proposed status where signals appear contradictory:
+- **#[number] [title]** — [N] signals, [M] appear contradictory: [brief summary]. Suggested action: [reconsider/update/accept with caveats]

@@ -23,7 +23,18 @@ Audit all active decisions for staleness, conflicts, and missing dependency link
    ### Missing Links
    Decisions that reference each other's topics but lack formal dependency links. For each, suggest creating the link with `mcp__reckon__link_decisions`.
 
-4. **Act on user choices** — For each issue the user wants to resolve:
+4. **Signal evidence summary** — For each product decision in draft/proposed status (hypothesis):
+   - Call `mcp__reckon__list_signals` for each hypothesis
+   - Summarize signal evidence and suggest action:
+     - Hypotheses with strong supporting evidence -> suggest accepting (validating)
+     - Hypotheses with contradictory evidence -> suggest reconsidering
+     - Hypotheses with no signals -> flag as untested assumptions
+
+   Present as:
+   ### Hypothesis Evidence
+   - **#[number] [title]** — [N] signals: [brief assessment]. Suggested action: [validate/reconsider/gather more evidence]
+
+5. **Act on user choices** — For each issue the user wants to resolve:
    - Stale: call `mcp__reckon__set_decision_status` to deprecate, or `mcp__reckon__update_decision` to refresh
    - Conflicts: follow the conflict resolution flow from the decision-governance skill
    - Missing links: call `mcp__reckon__link_decisions`

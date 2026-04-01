@@ -81,6 +81,30 @@ When superseding a decision via `mcp__reckon__update_decision`, all dependency l
 - One-off debugging steps
 - Choices with no meaningful alternatives
 
+## Signal Capture Protocol
+
+Signals are lightweight evidence attached to decisions. Capture a signal when:
+- A user shares evidence that supports or contradicts a decision (customer quote, metric, anecdote)
+- A meeting produces observations relevant to an existing decision
+- Code changes reveal that an assumption behind a decision was wrong or right
+- Analytics or user research data relates to an existing decision
+
+When capturing via `mcp__reckon__capture_signal`:
+- `body`: The evidence itself, stated factually. Include direct quotes when possible.
+- `source`: Evidence type — `"customer-call"`, `"meeting-transcript"`, `"metrics"`, `"code-review"`, `"support-ticket"`, `"user-research"`
+- `sourceRef`: Link to the source if available (meeting notes URL, ticket link, dashboard URL)
+
+Signals are append-only and zero-friction. **Prefer capturing too many signals over too few.** The body is the only required field.
+
+### Hypothesis-Evidence Assessment
+
+Product decisions in `draft` or `proposed` status are **hypotheses** — beliefs being acted on that could be validated or invalidated.
+
+After capturing signals on a hypothesis:
+- Briefly assess the evidence balance: _"3 signals support this hypothesis, 1 contradicts it"_
+- If contradicting signals accumulate, proactively ask: _"This hypothesis has growing counter-evidence. Should we reconsider?"_
+- When a hypothesis has strong supporting evidence, suggest promotion: _"This hypothesis has 5 supporting signals. Consider accepting it as a validated decision."_
+
 ## Status Lifecycle
 
 - `draft` — Captured during work, not yet discussed with stakeholders. Default for agent-captured decisions.
@@ -89,7 +113,9 @@ When superseding a decision via `mcp__reckon__update_decision`, all dependency l
 - `under_review` — Being reconsidered. Set when questioning an existing decision.
 - `deprecated` / `rejected` — No longer active.
 
-**Superseded decisions are frozen history** — they have no meaningful status and cannot be updated.
+Product decisions in `draft` or `proposed` status are presented as **hypotheses** — they represent beliefs to be validated with signal evidence. When accepted, they become **validated decisions**. The `proposed` → `accepted` transition gains real meaning when backed by accumulated signals.
+
+**Superseded decisions are frozen history** — they have no meaningful status and cannot be updated. Signals are automatically carried forward to the new version when a decision is superseded.
 
 ## Tags Convention
 
