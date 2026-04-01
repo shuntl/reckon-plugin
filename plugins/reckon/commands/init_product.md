@@ -10,7 +10,9 @@ Capture the foundational product decisions that drive this repository's technica
 
 1. **Check existing records** — Call `mcp__reckon__list_decisions` to see what's already captured, especially existing product decisions. Note which areas already have product context.
 
-2. **Scan for product signals** — Launch the `decision-scanner` agent with an explicit focus on product decisions. The agent should look for:
+2. **Check for external context sources** — Before scanning, check if the user has MCP connections to tools like Notion, Linear, Google Docs, Confluence, or similar. If they do, ask which workspaces or documents contain product context (strategy docs, product briefs, roadmaps, user research) and pull from those sources alongside the codebase. If they don't have external tools connected, suggest they consider connecting them via MCP for richer product decision discovery — the codebase alone only reveals decisions implied by code, not the full product thinking behind them.
+
+3. **Scan for product signals** — Launch the `decision-scanner` agent with an explicit focus on product decisions. The agent should look for:
    - `README.md` — value proposition, target audience, feature scope
    - Landing pages / marketing copy — what the product claims to do (and doesn't)
    - Auth/access setup — who can use it, user persona assumptions
@@ -20,7 +22,7 @@ Capture the foundational product decisions that drive this repository's technica
 
    For each signal, the agent should ask: "What product choice does this imply?"
 
-3. **Interview the user** — The codebase can't fully answer product questions. Ask:
+4. **Interview the user** — The codebase can't fully answer product questions. Ask:
    - "Who is the primary user of this product? Not the role — describe the person."
    - "What is the single most important problem this product solves?"
    - "What did you deliberately choose NOT to build, and why?"
@@ -28,7 +30,7 @@ Capture the foundational product decisions that drive this repository's technica
 
    If $ARGUMENTS specifies a focus area, tailor questions to that area.
 
-4. **Propose a dependency tree** — Combine scanner findings and interview answers into a tree of product decisions. The tree should flow from strategic root decisions down to more specific product choices:
+5. **Propose a dependency tree** — Combine scanner findings and interview answers into a tree of product decisions. The tree should flow from strategic root decisions down to more specific product choices:
    ```
    Proposed Product Decisions:
    ├── [Core value proposition / target user]
@@ -46,12 +48,12 @@ Capture the foundational product decisions that drive this repository's technica
    │   └── drives: ADR-011 GitHub App, ADR-007 OAuth 2.1
    ```
 
-5. **User reviews the tree** — Ask the user to review and adjust:
+6. **User reviews the tree** — Ask the user to review and adjust:
    - Accept, modify, remove, or add decisions
    - Confirm or change parent/child relationships
    - Confirm connections to existing technical decisions
 
-6. **Batch capture** — After approval:
+7. **Batch capture** — After approval:
    - Call `mcp__reckon__capture_decision` for each decision with:
      - `source: "init"`
      - `sourceRef: "codebase-scan"`
@@ -61,4 +63,4 @@ Capture the foundational product decisions that drive this repository's technica
    - Create dependency links matching the approved tree using `mcp__reckon__link_decisions`
    - Link product decisions to existing technical decisions they drive
 
-7. **Present summary** — Show the final captured tree with ADR numbers, including links to existing technical decisions.
+8. **Present summary** — Show the final captured tree with ADR numbers, including links to existing technical decisions.
