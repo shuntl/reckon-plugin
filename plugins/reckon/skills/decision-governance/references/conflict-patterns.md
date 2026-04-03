@@ -45,9 +45,20 @@ Two decisions don't directly conflict but their combined implications create ten
 - Ask the user whether the abstraction is justified despite the simplicity principle
 - If yes: capture a new decision explaining the exception, linked to both
 
+### Decision Refinement
+
+A new decision covers the same topic as an existing one but with updated scope, detail, or direction — without necessarily contradicting it.
+
+**Example:** Decision #4 says "We use REST for all APIs". A new decision says "We use REST for public APIs and gRPC for internal service-to-service calls."
+
+**Resolution:**
+- This is not a conflict — it's an evolution. The new decision should replace the old one, not coexist alongside it
+- Call `mcp__reckon__supersede_decision` to create a new version that preserves the original as frozen history
+- Do not use `capture_decision` — a standalone duplicate would create two decisions covering the same topic, making the graph confusing
+
 ## Resolution Strategies
 
-1. **Supersede** — Replace the old decision entirely. Use `mcp__reckon__update_decision` to create a new version. The old decision becomes frozen history.
+1. **Supersede** — Replace the old decision entirely. Use `mcp__reckon__supersede_decision` to create a new version. The old decision becomes frozen history.
 
 2. **Scope-limit** — Keep both decisions but clarify their boundaries. Create a dependency link and update bodies to reference each other.
 

@@ -8,7 +8,7 @@ Capture the foundational product decisions that drive this repository's technica
 
 ## Process
 
-1. **Check existing records** — Call `mcp__reckon__list_decisions` to see what's already captured, especially existing product decisions. Note which areas already have product context.
+1. **Check existing records** — Call `mcp__reckon__list_decisions` to see what's already captured, especially existing product decisions. Note which areas already have product context. Flag any existing decisions that the proposed tree would refine or replace — use `supersede_decision` for those instead of creating duplicates.
 
 2. **Check for external context sources** — Before scanning, check if the user has MCP connections to tools like Notion, Linear, Google Docs, Confluence, or similar. If they do, ask which workspaces or documents contain product context (strategy docs, product briefs, roadmaps, user research) and pull from those sources alongside the codebase. If they don't have external tools connected, suggest they consider connecting them via MCP for richer product decision discovery — the codebase alone only reveals decisions implied by code, not the full product thinking behind them.
 

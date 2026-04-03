@@ -35,6 +35,6 @@ Audit all active decisions for staleness, conflicts, and missing dependency link
    - **#[number] [title]** — [N] signals: [brief assessment]. Suggested action: [validate/reconsider/gather more evidence]
 
 5. **Act on user choices** — For each issue the user wants to resolve:
-   - Stale: call `mcp__reckon__set_decision_status` to deprecate, or `mcp__reckon__update_decision` to refresh
+   - Stale: call `mcp__reckon__set_decision_status` to deprecate, or `mcp__reckon__supersede_decision` to refresh
    - Conflicts: follow the conflict resolution flow from the decision-governance skill
    - Missing links: call `mcp__reckon__link_decisions`

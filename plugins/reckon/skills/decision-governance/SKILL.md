@@ -34,12 +34,12 @@ Before planning any significant work, search for existing decisions:
 
 ## Conflict Detection
 
-After searching, if the planned approach contradicts an existing `accepted` or `proposed` decision:
+After searching, if the new decision contradicts, refines, or replaces an existing `accepted` or `proposed` decision:
 
-1. Surface the conflict immediately — show the existing decision's number, title, and key reasoning
-2. Explain how the current plan conflicts
-3. Ask the user to choose: **supersede** the old decision, **adjust** the current approach, or **proceed with both** (with explicit justification)
-4. Never silently contradict an accepted decision
+1. Surface the overlap immediately — show the existing decision's number, title, and key reasoning
+2. Explain how the new decision relates: is it a contradiction, a refinement, a narrowing of scope, or a full replacement?
+3. Ask the user to choose: **supersede** the old decision via `mcp__reckon__supersede_decision` (creates a new version, marks the old one inactive), **adjust** the current approach to coexist, or **proceed with both** (with explicit justification for why they are distinct)
+4. Never silently create a standalone decision that should be a new version of an existing one
 
 ## Capture Protocol
 
@@ -59,11 +59,13 @@ When capturing, set:
 - `metadata.paths`: file paths most relevant to this decision (the files that would need to change if this decision were reversed)
 - `metadata.pathPatterns`: glob patterns for broader coverage (e.g. `"packages/db/**"` for database decisions)
 
+**Refinement check:** Before calling `capture_decision`, review search results for an existing decision covering the same topic. If the new decision refines, narrows, or replaces an existing one, call `mcp__reckon__supersede_decision` instead — this marks the old version inactive and creates a new version that inherits its links and signals.
+
 Structure the body using the template in `references/decision-template.md`.
 
 ## Link Carry-Forward
 
-When superseding a decision via `mcp__reckon__update_decision`, all dependency links are automatically cloned to the new version. The response includes `_clonedLinks` showing how many were carried forward. After superseding:
+When superseding a decision via `mcp__reckon__supersede_decision`, all dependency links are automatically cloned to the new version. The response includes `_clonedLinks` showing how many were carried forward. After superseding:
 
 1. Review the cloned links — are they all still relevant to the updated decision?
 2. Use `mcp__reckon__unlink_decisions` to remove any that no longer apply

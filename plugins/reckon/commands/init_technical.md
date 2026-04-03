@@ -8,7 +8,7 @@ Bootstrap this repository's technical decision records by scanning the codebase 
 
 ## Process
 
-1. **Check existing records** — Call `mcp__reckon__list_decisions` to see what's already captured. Note existing decisions to avoid duplicates.
+1. **Check existing records** — Call `mcp__reckon__list_decisions` to see what's already captured. Note existing decisions to avoid duplicates. Flag any existing decisions that the proposed tree would refine or replace — use `supersede_decision` for those instead of creating duplicates.
 
 2. **Launch scanner** — Launch the `decision-scanner` agent to analyze the codebase with a focus on technical decisions. If $ARGUMENTS specifies a focus area, pass it to the agent.
 
