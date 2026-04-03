@@ -2,17 +2,18 @@
 name: decision-governance
 description: >-
   This skill should be used when the user asks to "capture a decision",
-  "record an architecture choice", "document why we chose X", or when
-  choosing between implementation alternatives, establishing new patterns,
-  making trade-offs, planning significant architectural changes, evaluating
-  technology options, or questioning why something was done a certain way.
+  "record an architecture choice", "document why we chose X", "capture a process",
+  "document how to", "record a workflow", or when choosing between implementation
+  alternatives, establishing new patterns, making trade-offs, planning significant
+  architectural changes, evaluating technology options, questioning why something was
+  done a certain way, or documenting processes, runbooks, and how-tos.
   Also use when entering plan mode for non-trivial work that involves
   architectural choices.
 ---
 
-# Decision Governance via Reckon
+# Decision & Process Governance via Reckon
 
-Govern architectural and product decisions through Reckon MCP tools. Every significant choice — technical or product — should be searched, evaluated against existing decisions, and captured when new.
+Govern architectural decisions, product decisions, and processes through Reckon MCP tools. Every significant choice or repeatable procedure should be searched, evaluated against existing records, and captured when new.
 
 ## Category: Technical vs Product
 
@@ -124,6 +125,66 @@ Product decisions in `draft` or `proposed` status are presented as **hypotheses*
 Use lowercase tags for topic classification (not type — that's what `category` is for):
 
 `architecture`, `database`, `testing`, `auth`, `frontend`, `infrastructure`, `tooling`, `api`, `security`, `performance`, `conventions`, `bugfix`
+
+## Process Governance
+
+Processes are documented procedures, workflows, and how-tos. They live alongside decisions in the same graph and can link to decisions they depend on or implement.
+
+### Decision vs Process
+
+- **Decision**: A choice that was made — "We use PostgreSQL", "Auth via GitHub OAuth only"
+- **Process**: A documented procedure — "How to deploy to production", "PR review checklist", "Database migration workflow"
+
+### Process Capture Protocol
+
+Capture a process when:
+- The user describes a repeatable workflow or procedure
+- A new team member would need these steps documented
+- The procedure involves multiple steps that could be forgotten
+- The workflow implements or follows one or more decisions
+
+When capturing via `mcp__reckon__capture_process`:
+- `category`: `"technical"` for development/ops processes, `"product"` for product/business processes
+- `source`: `"claude-code"`
+- `status`: `"draft"` (default)
+- `linkedRecordIds`: IDs of decisions or other processes this process depends on
+- `metadata.paths`: file paths most relevant to this process
+
+Structure the body with clear steps:
+```
+## Purpose
+Why this process exists and when to use it.
+
+## Prerequisites
+What must be in place before starting.
+
+## Steps
+1. First step...
+2. Second step...
+3. Third step...
+
+## Notes
+Edge cases, common mistakes, tips.
+```
+
+### Process Supersede
+
+When a process's steps change, use `mcp__reckon__supersede_process` to create a new version. The old version is preserved as history. Signals (feedback, exceptions) are carried forward automatically.
+
+### Process Search
+
+Before capturing a new process, search for existing ones:
+1. Call `mcp__reckon__search` with relevant keywords
+2. If an existing process covers the same workflow, supersede it instead of creating a duplicate
+3. Processes can link to decisions via the dependency system — a deployment process might depend on the "Deploy via Railway" decision
+
+### Process Signals
+
+Signals on processes capture:
+- Feedback about steps that were confusing or wrong
+- Exceptions or edge cases encountered
+- Observed improvements or shortcuts
+- Evidence that the process needs updating
 
 ## Additional Resources
 

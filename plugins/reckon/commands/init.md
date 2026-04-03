@@ -1,10 +1,10 @@
 ---
-description: Bootstrap all decision records — runs product scan then technical scan
+description: Bootstrap all records — runs product scan, technical scan, then process scan
 ---
 
-# Initialize All Decision Records
+# Initialize All Records
 
-Run both the product and technical decision initialization in sequence.
+Run the product, technical, and process initialization in sequence.
 
 ## Process
 
@@ -12,4 +12,6 @@ Run both the product and technical decision initialization in sequence.
 
 2. **Technical second** — After product decisions are captured, run `/reckon:init_technical` with $ARGUMENTS (if provided). This scans configuration files, architecture signals, and interviews the user about technical constraints. Technical decisions will be linked to the product decisions captured in step 1.
 
-3. **Final landscape** — After both are complete, call `mcp__reckon__get_decision_landscape` and show the user a summary of the full decision landscape.
+3. **Processes third** — After decisions are captured, scan the codebase for documented and implicit processes. Look for READMEs, CONTRIBUTING.md, CI/CD configs, Makefiles, scripts, and deployment configs that describe workflows and procedures. Propose processes for the user to review, then capture approved ones using `capture_process`. Link processes to the decisions they implement or depend on.
+
+4. **Final landscape** — After all are complete, call `mcp__reckon__get_decision_landscape` and show the user a summary of the full landscape including decisions and processes.
