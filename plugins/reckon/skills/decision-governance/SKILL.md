@@ -78,7 +78,6 @@ The system enforces transitive reduction on all dependency links. When creating 
 
 - **Link to the most specific relevant decision, not ancestors.** If A depends on B and B depends on C, do NOT also link A to C — the system will silently skip the redundant link.
 - When adding a new link that makes an existing link redundant, the system automatically removes the redundant one.
-- Use `mcp__reckon__reduce_graph` to clean up any accumulated redundancies across the entire graph.
 
 ## Quality Bar
 
