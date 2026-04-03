@@ -66,11 +66,19 @@ Structure the body using the template in `references/decision-template.md`.
 
 ## Link Carry-Forward
 
-When superseding a decision via `mcp__reckon__supersede_decision`, all dependency links are automatically cloned to the new version. The response includes `_clonedLinks` showing how many were carried forward. After superseding:
+When superseding a decision via `mcp__reckon__supersede_decision`, all dependency links are automatically cloned to the new version. The response includes `_clonedLinks` showing how many were carried forward. Redundant transitive links are automatically removed during cloning. After superseding:
 
 1. Review the cloned links — are they all still relevant to the updated decision?
 2. Use `mcp__reckon__unlink_decisions` to remove any that no longer apply
 3. Links are preserved by default to prevent accidental data loss
+
+## Transitive Reduction
+
+The system enforces transitive reduction on all dependency links. When creating links:
+
+- **Link to the most specific relevant decision, not ancestors.** If A depends on B and B depends on C, do NOT also link A to C — the system will silently skip the redundant link.
+- When adding a new link that makes an existing link redundant, the system automatically removes the redundant one.
+- Use `mcp__reckon__reduce_graph` to clean up any accumulated redundancies across the entire graph.
 
 ## Quality Bar
 

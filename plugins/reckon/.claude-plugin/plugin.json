@@ -1,6 +1,6 @@
 {
   "name": "reckon",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Decision and process governance — automatically capture, search, and manage decisions and processes via Reckon",
   "author": {
     "name": "shuntl"
