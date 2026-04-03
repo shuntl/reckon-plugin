@@ -37,7 +37,7 @@ Look for structural decisions:
 ### 3. Decision Language in Code
 Grep for comments and docs that signal decisions:
 - Patterns: "chose", "decided", "trade-off", "instead of", "rather than", "we use", "opted for"
-- Files: `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `ADR/`, `docs/`
+- Files: `README.md`, `CONTRIBUTING.md`, `CLAUDE.md`, `DR/`, `docs/`
 
 ### 4. Product Decision Signals
 Scan for implicit product decisions in non-code artifacts:

@@ -45,7 +45,7 @@ Capture the foundational product decisions that drive this repository's technica
    Where product decisions clearly drive existing technical decisions, note the connection:
    ```
    ├── GitHub-only authentication (product)
-   │   └── drives: ADR-011 GitHub App, ADR-007 OAuth 2.1
+   │   └── drives: DR-011 GitHub App, DR-007 OAuth 2.1
    ```
 
 6. **User reviews the tree** — Ask the user to review and adjust:
@@ -63,4 +63,4 @@ Capture the foundational product decisions that drive this repository's technica
    - Create dependency links matching the approved tree using `mcp__reckon__link_decisions`
    - Link product decisions to existing technical decisions they drive
 
-8. **Present summary** — Show the final captured tree with ADR numbers, including links to existing technical decisions.
+8. **Present summary** — Show the final captured tree with DR numbers, including links to existing technical decisions.

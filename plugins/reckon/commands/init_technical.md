@@ -47,4 +47,4 @@ Bootstrap this repository's technical decision records by scanning the codebase 
      - Appropriate tags
    - After all decisions are captured, create dependency links matching the approved tree structure using `mcp__reckon__link_decisions`.
 
-7. **Present summary** — Show the final captured tree with ADR numbers assigned.
+7. **Present summary** — Show the final captured tree with DR numbers assigned.
